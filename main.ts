@@ -455,6 +455,7 @@ class PlayState implements GameState {
 		// go right
 		if(c == "right") {
 			turn();
+			heart.graphics.newImage("assets/player.png", function(r) { player.img = r; TILE_WIDTH = r.img.width; TILE_HEIGHT = r.img.height; });
 			if(player.x+1 < map.width && !map.isSolidAt(player.x+1)) {
 				player.x++;
 				camera.center(player.x);
@@ -463,6 +464,7 @@ class PlayState implements GameState {
 		// go left
 		else if(c == "left") {
 			turn();
+			heart.graphics.newImage("assets/player_reversed.png", function(r) { player.img = r; TILE_WIDTH = r.img.width; TILE_HEIGHT = r.img.height; });
 			if(player.x-1 >= 0 && !map.isSolidAt(player.x-1)) {
 				player.x--;
 				camera.center(player.x);
