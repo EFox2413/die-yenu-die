@@ -1,1 +1,0 @@
-@tsc --out main.js lib\heart.d.ts main.ts
