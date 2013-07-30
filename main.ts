@@ -327,24 +327,15 @@ function newSpellList() : Spell[] {
 class Player extends Actor {
 	x : number = 0;
 	img : heart.HeartImage = null;
-	imgFlip : heart.HeartImage = null;
 	xp : number = 975;
 	upgradePoints : number = 1;
-	isFlipped : bool;
 
 	constructor() {
 		super(0);
 		this.getSpell("Slash").level = 2;
-		this.isFlipped = false;
 	}
 
-	getImage() {
-		if(this.isFlipped)
-			return this.imgFlip;
-		else 
-			return this.img;
-	}
-		
+	getImage() { return this.img }
 
 	damage(amount:number) {
 		super.damage(amount);
@@ -463,7 +454,6 @@ class PlayState implements GameState {
 
 		// go right
 		if(c == "right") {
-			player.isFlipped = false;
 			turn();
 			if(player.x+1 < map.width && !map.isSolidAt(player.x+1)) {
 				player.x++;
@@ -472,7 +462,6 @@ class PlayState implements GameState {
 		}
 		// go left
 		else if(c == "left") {
-			player.isFlipped = true;
 			turn();
 			if(player.x-1 >= 0 && !map.isSolidAt(player.x-1)) {
 				player.x--;
@@ -576,7 +565,6 @@ var SCREEN_WIDTH, SCREEN_HEIGHT, TILE_WIDTH, TILE_HEIGHT;
 
 heart.preload = function() {
 	heart.graphics.newImage("assets/player.png", function(r) { player.img = r; TILE_WIDTH = r.img.width; TILE_HEIGHT = r.img.height; });
-	heart.graphics.newImage("assets/player_reversed.png", function(r) { player.imgFlip = r; TILE_WIDTH = r.img.width; TILE_HEIGHT = r.img.height; });
 	heart.graphics.newImage("assets/top.png", function(r) { tile_top = r; });
 	heart.graphics.newImage("assets/wall3.png", function(r) { tile_wall = r; });
 	heart.graphics.newImage("assets/ankh1.png", function(r) { tile_idk = r; });
