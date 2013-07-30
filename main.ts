@@ -429,10 +429,35 @@ class UpgradeState implements GameState {
 	}
 }
 
+// game over and restart screen
+class GameOverState implements GameState {
+	keydown(c:string) {
+		switch(c) {
+			case "r":
+				popState(); //back out of game over screen
+				break;
+
+			case "R":
+				popState(); //back out of game over screen
+				break;
+		}
+	}
+
+	draw() {
+		var BASE_X = SCREEN_WIDTH/3;
+		var BASE_Y = SCREEN_HEIGHT/2;
+		heart.graphics.setColor(255, 255, 0);
+		heart.graphics.print("Game Over, Press R to try again.", BASE_X, BASE_Y - 10);
+	}
+}
+
 class PlayState implements GameState {
 	keydown(c:string) {
 		// don't do anything if the player is dead
-		if(!player.alive) return;
+		if(!player.alive) {
+			pushState(new GameOverState());
+			return;
+		}
 
 		// space (attack)
 		if(c == " ") {
