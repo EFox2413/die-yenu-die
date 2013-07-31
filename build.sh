@@ -1,1 +1,1 @@
-tsc --out main.js lib/heart.d.ts main.ts
+tsc --out main.js lib/heart.d.ts Camera.ts GameState.ts Map.ts Spell.ts Tiles.ts main.ts
