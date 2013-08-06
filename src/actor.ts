@@ -17,12 +17,17 @@ class Actor implements Tile {
 	effectImg : heart.HeartImage = null;
 
 	constructor(x:number, level:number=1) {
+		this.init(x, level);
+	}
+
+	init(x:number, level:number) {
 		this.x = x;
 		this.spells = newSpellList();
 		this.spell = this.spells[0];
 		this.level = level;
 		this.maxHealth = 100 + 5*this.level
 		this.health = this.maxHealth
+		this.alive = true;
 	}
 
 	isSolid() { return this.alive }

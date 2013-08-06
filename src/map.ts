@@ -51,7 +51,7 @@ class MapParser extends Map {
 		this.width = map.length;
 		for(var i = 0; i < map.length; i++) {
 			switch(map[i]) {
-				case '$': this.pushTile(i, new Zombie(i, level)); break;
+				case '$': this.pushTile(i, new Zombie(i)); break;
 				case 'U': this.pushTile(i, new UpgradeStation()); break;
 				case 'F': this.pushTile(i, new Fireplace()); break;
 				case 'D': this.pushTile(i, new Door()); break;
