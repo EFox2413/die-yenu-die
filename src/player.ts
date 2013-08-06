@@ -14,6 +14,11 @@ class Player extends Actor {
 		this.getSpell("Slash").level = 2;
 	}
 
+	init() {
+		super.init(0, 1);
+		this.getSpell("Slash").level = 2;
+	}
+
 	getImage() { return this.img }
 
 	damage(amount:number) {

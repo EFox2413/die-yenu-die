@@ -6,7 +6,8 @@
 class PlayState implements GameState {
 	keydown(c:string) {
 		// don't do anything if the player is dead
-		if(!player.alive) return;
+		if(!player.alive) 
+			pushState(new GameOverState());
 
 		// space (attack)
 		if(c == " ") {
