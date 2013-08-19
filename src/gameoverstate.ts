@@ -3,10 +3,6 @@ class GameOverState implements GameState {
 	keydown(c:string) {
 		switch(c) {
 			case "r":
-				restart();
-				popState(); //back out of game over screen
-				break;
-
 			case "R":
 				restart();
 				popState(); //back out of game over screen

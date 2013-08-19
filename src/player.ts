@@ -10,8 +10,7 @@ class Player extends Actor {
 	upgradePoints : number = 1;
 
 	constructor() {
-		super(0);
-		this.getSpell("Slash").level = 2;
+		this.init();	
 	}
 
 	init() {
